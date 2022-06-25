@@ -1,0 +1,68 @@
+/** @file
+Questo file contiene la definizione di `ElemType` per il tipo `int` e la 
+documentazione delle funzioni a esso associate.
+*/
+
+#ifndef ELEMTYPE_INT_H_
+#define ELEMTYPE_INT_H_
+
+#include <stdbool.h>
+#include <stdio.h>
+
+/** @brief Definizione di `struct ElemType`. */
+typedef struct Address {
+    char name[40];
+    char street[50];
+    int  number;
+    char city[30];
+    char province[3];
+    char postal_code[6];
+} ElemType;
+
+/** @brief La funzione `ElemCompare()` confronta due elementi.
+
+@param[in] e1 Puntatore al primo elemento di cui eseguire il confronto. Il 
+              valore contenuto in `e1` non viene modificato.
+@param[in] e2 Puntatore al secondo elemento di cui eseguire il confronto. Il
+              valore contenuto in `e2` non viene modificato.
+
+@return La funzione ritorna un valore intero che indica la relazione tra i due
+        elementi, ovvero:
+         - `< 0` (ad esempio `-1`) se il contenuto del primo è minore di quello del secondo;
+         - `0` se i contenuti dei due elementi sono uguali;
+         - `> 0` (ad esempio `1`) se il contenuto del primo è maggiore di quello del secondo.
+*/
+int ElemCompare(const ElemType *e1, const ElemType *e2);
+
+/** @brief La funzione `ElemCopy()` crea e ritorna una copia dell'elemento dato.
+
+@param[in] e Puntatore all'elemento da copiare. Il valore contenuto in `e` non 
+             viene modificato.
+
+@return Copia dell'elemento `e`.
+*/
+ElemType ElemCopy(const ElemType *e);
+
+/** @brief La funzione `ElemSwap()` scambia i due elementi specificati.
+
+@param[in] e1 Puntatore al primo elemento da scambiare.
+@param[in] e2 Puntatore al secondo elemento da scambiare.
+
+@return Non ci sono valori di ritorno.
+*/
+void ElemSwap(ElemType *e1, ElemType *e2);
+
+/** @brief La funzione `ElemDelete()` libera la memoria occupata dall'elemento
+           specificato.
+
+@param[in] e Puntatore all'elemento di cui liberare la memoria.
+
+@return Non ci sono valori di ritorno.
+*/
+void ElemDelete(ElemType *e);
+
+void ElemWriteStdout(const ElemType* e);
+
+void ElemWrite(const ElemType* e, FILE* f);
+
+#endif
